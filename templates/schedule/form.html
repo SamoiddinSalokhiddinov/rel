@@ -1,0 +1,177 @@
+{% extends '../layout/layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Application Form of Schedule' %}
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet"
+  href="{% static 'assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/formvalidation/dist/css/formValidation.css' %}" />
+
+
+{% endblock %}
+{% block body %}
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h6 class="breadcrumb-wrapper py-3 mb-4">
+      <span class="text-muted fw-light">{% trans 'Schedule' %} /</span> {% trans 'Application Form of Schedule' %}
+    </h6>
+
+    <div class="page-header">
+      <h2 class="text-dark text-center">{% trans 'Application form' %}</h2>
+    </div>
+    <form method="POST" class="needs-validation" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ formset.management_form }}
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          {% csrf_token %}
+          {{ formset.management_form }}
+          <div class="row">
+            <div class="col-md-12 col-12 mt-2">
+              <label class="form-label" for="multicol-first-name">
+                {{form.doctor.label}}
+              </label>
+              {{form.doctor}}
+              {{ form.doctor.errors }}
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.monday_start.label}}
+              </label>
+              {{form.monday_start}}
+              {{ form.monday_start.errors }}
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.monday_end.label}}
+              </label>
+              {{form.monday_end}}
+              {{ form.monday_end.errors }}
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.tuesday_start.label}}
+              </label>
+              {{form.tuesday_start}}
+              {{ form.tuesday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.tuesday_end.label}}
+              </label>
+              {{form.tuesday_end}}
+              {{ form.tuesday_end.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.wednesday_start.label}}
+              </label>
+              {{form.wednesday_start}}
+              {{ form.wednesday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.wednesday_end.label}}
+              </label>
+              {{form.wednesday_end}}
+              {{ form.wednesday_end.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.thursday_start.label}}
+              </label>
+              {{form.thursday_start}}
+              {{ form.thursday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.thursday_end.label}}
+              </label>
+              {{form.thursday_end}}
+              {{ form.thursday_end.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.friday_start.label}}
+              </label>
+              {{form.friday_start}}
+              {{ form.friday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.friday_end.label}}
+              </label>
+              {{form.friday_end}}
+              {{ form.friday_end.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.saturday_start.label}}
+              </label>
+              {{form.saturday_start}}
+              {{ form.saturday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.saturday_end.label}}
+              </label>
+              {{form.saturday_end}}
+              {{ form.saturday_end.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.sunday_start.label}}
+              </label>
+              {{form.sunday_start}}
+              {{ form.sunday_start.errors }}
+            </div>
+            <div class="col-md-6 col-lg-6 col-12 mt-4">
+              <label class="form-label" for="multicol-first-name">
+                {{form.sunday_end.label}}
+              </label>
+              {{form.sunday_end}}
+              {{ form.sunday_end.errors }}
+            </div>
+
+          </div>
+          <div class="invoice-action-btn mt-2 mb-1">
+            <button type="submit" class="btn btn-primary btn-block invoice-send-btn">
+              <i class="bx bxs-save"></i>
+              <span>{% trans 'Saqlash' %}</span>
+            </button>
+            <button type="reset" class="btn btn-label-secondary">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+  <!-- / Content -->
+
+  <div class="content-backdrop fade"></div>
+</div>
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js' %}"></script>
+<!-- AutoFocus plugin, automatically focus on the first invalid input  -->
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js' %}"></script>
+
+{% endblock %}

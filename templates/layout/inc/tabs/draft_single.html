@@ -1,0 +1,87 @@
+<!-- TITLE AND STATUS -->
+<div class="title_status_gr">
+    <hr class="mx-n4 my-4">
+    <div class="row">
+        <h6 class="text-muted fw-normal">1. {% trans '<Title></Title> and Status' %}</h6>
+        <div class="col-md-6">
+
+            <label for="" class="form-label">{{ form.title.label }}</label>
+            {{ form.title }}
+            <p class="text-danger">
+                {{ form.title.errors.as_text }}
+            </p>
+        </div>
+
+        <div class="col-md-6">
+            <label for="" class="form-label">{{ form.status.label }}</label>
+            {{ form.status }}
+            <p class="text-danger">
+                {{ form.status.errors.as_text }}
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END TITLE AND STATUS -->
+
+
+<!-- SYMPTOMS -->
+<div class="symp_status_gr">
+    <hr class="mx-n4 my-4">
+    <div class="row">
+        <h6 class="text-muted fw-normal">2. {% trans 'Symptoms' %}</h6>
+        <div class="col-md-8">
+
+            <label for="" class="form-label">{{ form.symptoms.label }}</label>
+            {{ form.symptoms }}
+            <p class="text-danger">
+                {{ form.symptoms.errors.as_text }}
+            </p>
+        </div>
+
+    </div>
+</div>
+<!-- END SYMPTOMS -->
+
+
+<!-- DIAGNOSIS -->
+<div class="diagnosis_gr">
+    <hr class="mx-n4 my-4">
+    <div class="row">
+        <h6 class="text-muted fw-normal">3. {% trans 'Diagnosis' %}</h6>
+        <div class="col-md-6">
+            <label for="" class="form-label">{{ form.diagnosis.label }}</label>
+            {{ form.diagnosis }}
+            <p class="text-danger">
+                {{ form.diagnosis.errors.as_text }}
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END DIAGNOSIS -->
+
+<!-- FILE -->
+<div class="file_gr">
+    <hr class="mx-n4 my-4">
+    <div class="row">
+        <h6 class="text-muted fw-normal">4. {% trans 'File' %}</h6>
+        <div class="col-md-6">
+            <label for="" class="form-label">{{ form.extra_file.label }}</label>
+            {{ form.extra_file }}
+            {% if admittance.extra_file %}
+            <a href="{{ admittance.extra_file.url }}" class="d-flex">
+                <div class="badge bg-label-info rounded p-2 ">
+                    <i class="fa-solid fa-folder-closed d-inline-block mr-4"></i>
+                    <span class="d-inline-block ml-2">{{ admittance.extra_file }}</span>
+                </div>
+            </a>
+            {% else %}
+            <h7 class="text-info">{% trans 'No entries yet !' %}</h7>
+            {% endif %}
+            <p class="text-danger">
+                {{ form.extra_file.errors.as_text }}
+            </p>
+
+        </div>
+    </div>
+</div>
+<!-- END FILE -->

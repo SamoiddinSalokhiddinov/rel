@@ -1,0 +1,193 @@
+
+/********** SIDEBAR **********/
+.text-sanus-muted{
+    color: #186e9163!important;
+
+  
+}
+.text-sanus a {
+    color: #0e4d64a4!important;
+}
+
+i.sub-fa-icon {
+    display: inline-block;
+    margin-right: 5px!important;
+}
+i.sub-child-fa-icon {
+    display: inline-block;
+    margin: 0 8px!important;
+    
+}
+
+
+/********** END SIDEBAR **********/
+
+
+
+/********** PATIENT **********/
+
+.patient_img_box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/********** END PATIENT **********/
+
+
+
+/********** LOGO **********/
+
+span.rad0-logo {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    margin-left: -5px;
+}
+
+.rad0-logo-text{
+    color: #1F92BF!important;
+}
+
+.layout-menu-toggle .menu-toggle-icon:before {
+    color: #1F92BF;
+}
+
+/********** END LOGO ********/
+
+
+
+/********** LIVICONS ********/
+
+li.menu-item.rad0-livicon-li:hover{
+    background: #cff7ef;
+}
+
+.rad0-livicon-span{
+    display:inline-block;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+li.menu-sub-item{
+    list-style: none!important;
+}
+
+
+li.menu-sub-item.active {
+    background: #DBE4F3;
+}
+
+li.menu-sub-item.active .rad0-livicon-subicon-name {
+    color: #1F92BF;
+    font-weight: 600;
+}
+
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .menu-vertical .menu-inner > .menu-item .lievo-svg-wrapper,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu.menu-vertical .menu-inner > .menu-item .lievo-svg-wrapper {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 1!important;
+}
+
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .menu-vertical .menu-inner > .menu-item > .menu-link .rad0-livicon-i ,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu.menu-vertical .menu-inner > .menu-item > .menu-link .rad0-livicon-i  ,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .menu-vertical .menu-inner > .menu-item > .menu-sub-item > .menu-link .rad0-sub-livicon-i ,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu.menu-vertical .menu-inner > .menu-item > .menu-sub-item > .menu-link .rad0-sub-livicon-i  {
+    margin-left: -2px!important;
+    width: 5rem;
+    text-align: center;
+    margin-right: 0;
+}
+
+.menu-item:hover .rad0-livicon-icon-name ,
+.menu-item.open.active .rad0-livicon-icon-name,
+.menu-sub-item:hover .rad0-livicon-subicon-name
+{
+    color: #1F92BF;
+}
+
+
+.menu-vertical .menu-sub .menu-link {
+    padding-left: 1.8rem!important;
+}
+    
+.rad0-livicon-subicon-name {
+    margin-left: 7px;
+}
+
+.bg-menu-theme .menu-item.active > .menu-link:not(.menu-toggle) {
+    color: #1F92BF!important;
+    background-color: rgb(219, 228, 243);
+}
+
+
+i.rad0-sub-livicon-i.sub-child-icon.menu-icon.tf-icons.ml-2.livicon-evo-holder {
+    margin-left: 5px!important;
+}
+
+.rad0-sub-livicon-i.menu-icon.tf-icons.livicon-evo-holder {
+    margin-right: 5px!important;
+}
+/******** END LIVICONS ******/
+
+
+.select2-dropdown.increasezindex {
+    z-index:99999;
+}
+
+.select2-dropdown {
+    z-index:99999;
+}
+
+
+
+.doc-box {
+    max-height: 490px!important;
+    overflow: scroll!important;
+}
+
+
+/***************** TIMELINE ***********/
+.avatar.me-3 {
+    margin-right: 0.5rem !important;
+}
+
+.timeline .timeline-item .timeline-event {
+    position: relative;
+    top: -1rem;
+    width: 100%;
+    min-height: 4rem;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    padding: 1.25rem 1.25rem!important;
+}
+
+.timeline_patient {
+    position: relative;
+    display: flex;
+    width: 90%;
+}
+
+.d-flex.flex-wrap.timeline-box-wrapper {
+    width: 100%!important;
+}
+
+/* 
+small.text-time-patient {
+    position: relative;
+    display: inline-block;
+    width: 15%;
+} */
+
+
+.square h1 {
+    color: #fff;
+}
+
+/**************************************/
+
+

@@ -1,0 +1,369 @@
+{% extends '../layout/layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Admittance' %}
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css' %}" />
+<link rel="stylesheet"
+  href="{% static 'assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/formvalidation/dist/css/formValidation.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/vendor/libs/select2/select2.css' %}" />
+
+
+{% endblock %}
+{% block body %}
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h6 class="breadcrumb-wrapper py-3 mb-4">
+      <span class="text-muted fw-light">{% trans 'Admittance' %} /</span>
+      <span>Dr {{admittance.doctor}} {{data.doctor.surname}} :
+        {% trans 'Patient' %} {{admittance.patient}} {{admittance.patient.surname}} </span>
+    </h6>
+
+    <div class="card mb-4">
+      <h5 class="card-header text-center">{% trans 'Application Form of Admittance' %}</h5>
+      <div class="card-body">
+
+        <!-- APPLICATION AND PATIENT INFO -->
+        <div class="row mb-3">
+          <div class="col-md-6 col-lg-6 col-12">
+
+            <div class="card">
+
+              <div class="card-header">
+                <h5 class="text-center">1. {% trans 'Application Info' %}</h5>
+              </div>
+
+              <div class="card-body">
+
+                <div class="" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fas fa-heading"></i>
+                    {% trans 'Title' %} :
+                  </span>
+
+                  <span>
+                    {{ admittance.title }}
+                  </span>
+
+                </div>
+
+
+                <div class="mt-2" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-user-doctor"></i>
+                    {% trans 'Date' %} :
+                  </span>
+
+                  <span>
+                    {{ admittance.date }}
+                  </span>
+
+                </div>
+
+                <div class="mt-2" style="font-size: 14px;">
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-hospital-user "></i>
+                    {% trans 'Start Hour' %} :
+                  </span>
+                  <span>
+                    {{ admittance.start_hour }}
+                  </span>
+                </div>
+
+                <div class="mt-2" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-hospital"></i>
+                    {% trans 'End Hour' %} :
+                  </span>
+                  <span>
+                    {{ admittance.end_hour }}
+                  </span>
+
+                </div>
+
+                <div class="mt-3" style="font-size: 14px;">
+
+                  {% if admittance.status == "admitted" %}
+                  <span class="fw-bold badge bg-success">
+                    <i class="menu-icon fa-solid fa-certificate"></i>
+                    {% trans 'Status' %} : {{admittance.status}}
+                  </span>
+                  {% elif admittance.status == "admitting" %}
+                  <span class="fw-bold badge bg-info">
+                    <i class="menu-icon fa-solid fa-certificate"></i>
+                    {% trans 'Status' %} : {{admittance.status}}
+                  </span>
+                  {% else %}
+                  <span class="fw-bold badge bg-warning">
+                    <i class="menu-icon fa-solid fa-certificate"></i>
+                    {% trans 'Status' %} : {{admittance.status}}
+                  </span>
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-md-6 col-lg-6 col-12">
+            <div class="card">
+
+              <div class="card-header text-center">
+
+                <h5>2. {% trans 'Patient Info' %}
+                </h5>
+
+              </div>
+
+              <div class="card-body">
+
+                <div style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-bed-pulse "></i>
+                    {% trans 'F.I.O' %} :
+                  </span>
+
+                  <span>
+                    {{ admittance.patient.name }}
+                    {{ admittance.patient.middle_name }}
+                    {{ admittance.patient.surname }}
+                  </span>
+
+                </div>
+
+                <div class="mt-3" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="fa-solid fa-id-card"></i>
+                    {% trans 'Card ID' %} :
+                  </span>
+
+                  <span># {{ admittance.patient.card_id }}
+                  </span>
+
+                </div>
+
+                <div class="mt-3" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="fa-solid fa-syringe"></i>
+                    {% trans 'Blood' %} :
+                  </span>
+
+                  <span>
+                    {{ admittance.patient.blood_verbose }}
+                  </span>
+
+                </div>
+
+                <div class="mt-3" style="font-size: 14px;">
+
+                  <span class="text-dark fw-bold">
+                    <i class="fa-solid fa-calendar"></i>
+                    {% trans 'Birthday' %} :
+                  </span>
+
+                  <span>
+                    {{ admittance.patient.birthday }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <!-- END APPLICATION AND PATIENT INFO -->
+
+        <!-- DOCTOR AND SYMPTOMS -->
+        <hr class="mx-n4 my-4">
+        <div class="row mb-3 ">
+          <div class="col-md-6 col-lg-6 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="text-center">3. {% trans 'Doctor Info' %}</h5>
+              </div>
+              <div class="card-body">
+
+                <div class="" style="font-size: 14px;">
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-user-doctor"></i>
+                    {% trans 'F.I.O' %} :
+                  </span>
+                  <span>Dr
+                    {{ admittance.doctor.name }}
+                    {{ admittance.doctor.middle_name }}
+                    {{ admittance.doctor.surname }}
+                  </span>
+                </div>
+                <div class="mt-2" style="font-size: 14px;">
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-hospital-user "></i>
+                    {% trans 'Speciality' %} :
+                  </span>
+                  <span>
+                    {{ admittance.doctor.speciality }}
+                  </span>
+                </div>
+                <div class="mt-2" style="font-size: 14px;">
+                  <span class="text-dark fw-bold">
+                    <i class="menu-icon tf-icons fa-solid fa-hospital"></i>
+                    {% trans 'Department' %} :
+                  </span>
+                  <span>
+                    {{ admittance.doctor.department }}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-12">
+            <div class="card">
+
+              <div class="card-header">
+                <h5 class="ml-3">4. {% trans 'Symptoms' %}</h5>
+              </div>
+
+              <div class="card-body ">
+
+                <div class="row">
+                  {% if admittance.symptoms.all|length > 0 %}
+                  <div class="col-md-5 col-lg-5 col-12">
+                    <div class="text-center" style="font-size: 16px;">
+                      <span class="text-dark fw-bold">
+                        <i class="menu-icon fa-solid fa-disease"></i>
+                        <span class="d-inline-block ml-2">
+                          {% trans 'All Symptoms' %} :
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-lg-7 col-12">
+                    {% for symptom in admittance.symptoms.all %}
+                    <div class="">
+                      {{forloop.counter }} {{ symptom }}
+                    </div>
+                    {% endfor %}
+                  </div>
+                  {% else %}
+                  <h5 class="text-center text-info">{% trans 'No entries yet !' %}</h5>
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- END DOCTOR AND SYMPTOMS -->
+
+        <!-- DIAGNOSIS -->
+        <hr class="mx-n4 my-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="text-center">4. {% trans 'Diagonosis' %}</h5>
+              </div>
+              {% if admittance.diagnosis %}
+              <div class="card-body">
+                {{ admittance.diagnosis|safe }}
+              </div>
+              {% else %}
+              <h5 class="text-center text-info">{% trans 'No entries yet !' %}</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- END DIAGNOSIS  -->
+
+
+
+        <hr class="mx-n4 my-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="">5. {% trans 'Files' %}</h5>
+                {% if admittance.extra_file %}
+                <a href="{{ admittance.extra_file.url }}" class="d-flex">
+                  <div class="badge bg-label-info rounded p-2 ">
+                    <i class="fa-solid fa-folder-closed d-inline-block mr-4"></i>
+                    <span class="d-inline-block ml-2">{{ admittance.extra_file }}</span>
+                  </div>
+                </a>
+                {% else %}
+                <h5 class="text-center text-info">{% trans 'No entries yet !' %}</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DIAGNOSIS AND EXTRA FILE -->
+
+        <!-- END DIAGNOSIS AND EXTRA FILE -->
+      </div>
+    </div>
+
+
+
+  </div>
+  <!-- / Content -->
+
+  <div class="content-backdrop fade"></div>
+</div>
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'assets/vendor/libs/select2/select2.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js' %}"></script>
+<!-- AutoFocus plugin, automatically focus on the first invalid input  -->
+<script src="{% static 'assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+<script>
+  let form_count = Number($("[name=extra_field_count]").val());
+  // get extra form count so we know what index to use for the next item.
+
+  $("#add-another").click(function () {
+    form_count++;
+
+    let element = $('<input type="text"/>');
+    element.attr('name', 'extra_field_' + form_count);
+    $("#forms").append(element);
+    // build element and append it to our forms container
+
+    $("[name=extra_field_count]").val(form_count);
+    // increment form count so our view knows to populate 
+    // that many fields for validation
+  })
+</script>
+<script>
+  $(document).ready(function () {
+    $(".select2").select2();
+  })
+</script>
+{% endblock %}
